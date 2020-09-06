@@ -2,6 +2,8 @@
 
 set -u
 
+echo ${GCAL_OAUTH} > ~/.gcalcli_oauth
+
 cat /tmp/cmds <<EOF
 sendfile /topic/gcal-agenda /tmp/agenda.txt
 quit
