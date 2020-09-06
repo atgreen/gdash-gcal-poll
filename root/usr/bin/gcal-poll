@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -u
+
+cat /tmp/cmds <<EOF
+sendfile /tmp/agenda.txt
+quit
+EOF
+
+while true; do
+      
+    gcalcli --client-id ${GCAL_CLIENT_ID} \
+	    --client-secret ${GCAL_CLIENT_SECRET} \
+	    --calendar ${GCAL_CALENDAR} agenda > /tmp/agenda.txt;
+    
+    stomp -H amq-broker -P 61613 -F /tmp/cmds;
+
+    sleep 5m
+
+done;
