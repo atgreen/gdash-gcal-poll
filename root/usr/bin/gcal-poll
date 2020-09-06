@@ -4,7 +4,7 @@ set -u
 
 echo ${GCAL_OAUTH} > ~/.gcalcli_oauth
 
-cat /tmp/cmds <<EOF
+cat > ~/cmds <<EOF
 sendfile /topic/gcal-agenda /tmp/agenda.txt
 quit
 EOF
@@ -15,7 +15,7 @@ while true; do
 	    --client-secret ${GCAL_CLIENT_SECRET} \
 	    --calendar ${GCAL_CALENDAR} agenda > /tmp/agenda.txt;
     
-    stomp -H amq-broker -P 61613 -F /tmp/cmds;
+    stomp -H amq-broker -P 61613 -F ~/cmds;
 
     sleep 5m
 
