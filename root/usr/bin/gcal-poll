@@ -3,7 +3,7 @@
 set -u
 
 cat /tmp/cmds <<EOF
-sendfile /tmp/agenda.txt
+sendfile /topic/gcal-agenda /tmp/agenda.txt
 quit
 EOF
 
