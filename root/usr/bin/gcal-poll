@@ -13,7 +13,7 @@ while true; do
       
     gcalcli --client-id ${GCAL_CLIENT_ID} \
 	    --client-secret ${GCAL_CLIENT_SECRET} \
-	    --calendar ${GCAL_CALENDAR} agenda --tsv > /tmp/agenda.txt;
+	    --calendar ${GCAL_CALENDAR} agenda --tsv --nodeclined > /tmp/agenda.txt;
     
     stomp -H amq-broker -P 61613 -F ~/cmds;
 
